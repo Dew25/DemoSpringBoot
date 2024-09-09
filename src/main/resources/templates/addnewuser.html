@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DemoApplication</title>
+</head>
+<body>
+<h1>Добавить нового пользователя</h1>
+<form th:action="@{/user/save}" th:object="${myUser}" method="post">
+    <div>
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" th:field="{username}" placeholder="Введите имя пользователя"/>
+        <div th:if="${#fields.hasErrors('myUser.username')}" th:errors="{username}">Ошибка: </div>
+    </div>
+
+    <div>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" th:field="{password}" placeholder="Введите пароль"/>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*password}">Ошибка: </div>
+    </div>
+
+    <!-- Поля для объекта Person -->
+    <div>
+        <label for="firstName">Имя:</label>
+        <input type="text" id="firstName" th:field="*{person.firstName}" placeholder="Введите имя"/>
+        <div th:if="${#fields.hasErrors('myUser.person.firstName')}" th:errors="*{myUser.person.firstName}">Ошибка: </div>
+    </div>
+
+    <div>
+        <label for="lastName">Фамилия:</label>
+        <input type="text" id="lastName" th:field="*{myUser.person.lastName}" placeholder="Введите фамилию"/>
+        <div th:if="${#fields.hasErrors('myUser.person.lastName')}" th:errors="*{myUser.person.lastName}">Ошибка: </div>
+    </div>
+
+    <button type="submit">Сохранить пользователя</button>
+</form>
+
+</body>
+</body>
+</html>

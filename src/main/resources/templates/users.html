@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>DemoApplication</title>
+</head>
+<body>
+    <h1>USERS</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>фамилия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.person.firstname}"></td>
+            <td th:text="${user.person.lastname}"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
