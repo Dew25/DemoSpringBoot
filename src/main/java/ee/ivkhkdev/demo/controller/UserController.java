@@ -23,8 +23,10 @@ public class UserController {
     public String begin(Model model) {
         return "index";
     }
+
     @GetMapping("/user/form")
     public String showUserForm(Model model) {
+        model.addAttribute("myUser", new MyUser());
         return "addnewuser";
     }
 
